@@ -19,22 +19,6 @@ function n2cc_load_custom_style() {
 }
 
 /**
- * Apply styles to the visual editor
- */  
-add_filter('mce_css', 'tuts_mcekit_editor_style');
-function tuts_mcekit_editor_style($url) {
-
-	if ( !empty($url) )
-		$url .= ',';
-
-	// Retrieves the plugin directory URL
-	// Change the path here if using different directories
-	$url .= trailingslashit( plugin_dir_url(__FILE__) ) . '/editor-styles.css';
-
-	return $url;
-}
-
-/**
  * Add "Styles" drop-down
  */ 
 add_filter( 'mce_buttons_2', 'tuts_mce_editor_buttons' );
