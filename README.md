@@ -2,7 +2,7 @@
 
 This WordPress plugin adds new formats/styles to the WordPress Editor.
 
-![Screenshot of N2Clic Custom](screenshot.png)
+![](http://i.imgur.com/WOPzGIn.png)
 
 ## How to disable the front-end style? ##
 
