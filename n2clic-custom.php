@@ -9,8 +9,8 @@ Author URI: http://n2clic.com/
 License: GPL2
 */
 
-define( 'N2CC_URL', plugin_dir_url( __FILE__ ) );
-define( 'N2CC_PATH', plugin_dir_path( __FILE__ ) );
+define( 'N2CC_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
+define( 'N2CC_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 
 add_action( 'wp_print_styles', 'n2cc_load_custom_style' );
 /* Custom style */
@@ -133,11 +133,11 @@ add_action( 'init', 'n2c_custom_updater_init' );
 function n2c_custom_updater_init() {
 
     /* Load Plugin Updater */
-    require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/plugin-updater.php' );
+    require_once( N2CC_PATH . 'includes/plugin-updater.php' );
 
     /* Updater Config */
     $config = array(
-        'base'      => plugin_basename( __FILE__ ), //required
+        'base'      => plugin_basename( __FILE__ ),
         'dashboard' => false,
         'username'  => false,
         'key'       => '',
@@ -146,5 +146,5 @@ function n2c_custom_updater_init() {
     );
 
     /* Load Updater Class */
-    new My_Awesome_Plugin_Updater( $config );
+    new N2Clic_Custom_Updater( $config );
 }

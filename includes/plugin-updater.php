@@ -1,6 +1,6 @@
 <?php
 /* Prevent loading this file directly and/or if the class is already defined */
-if ( ! defined( 'ABSPATH' ) || class_exists( 'Super_Mario_Plugin_Updater' ) )
+if ( ! defined( 'ABSPATH' ) || class_exists( 'N2Clic_Custom_Updater' ) )
 	return;
 
 
@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) || class_exists( 'Super_Mario_Plugin_Updater' ) )
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @copyright Copyright (c) 2013, David Chandra Purnama
  */
-class Super_Mario_Plugin_Updater{
+class N2Clic_Custom_Updater{
 
 	/**
 	 * @var $config the config for the updater
