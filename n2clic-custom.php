@@ -123,3 +123,28 @@ add_action( 'after_setup_theme', 'n2cc_add_editor_style' );
 function n2cc_add_editor_style() {
     add_editor_style( N2CC_URL . 'css/n2-custom.css' );
 }
+
+/* hook updater to init */
+add_action( 'init', 'n2c_custom_updater_init' );
+
+/**
+ * Load and Activate Plugin Updater Class.
+ */
+function n2c_custom_updater_init() {
+
+    /* Load Plugin Updater */
+    require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/plugin-updater.php' );
+
+    /* Updater Config */
+    $config = array(
+        'base'      => plugin_basename( __FILE__ ), //required
+        'dashboard' => false,
+        'username'  => false,
+        'key'       => '',
+        'repo_uri'  => 'https://api.themeavenue.net',
+        'repo_slug' => 'n2clic-custom',
+    );
+
+    /* Load Updater Class */
+    new My_Awesome_Plugin_Updater( $config );
+}
