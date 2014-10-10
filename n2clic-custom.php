@@ -18,6 +18,15 @@ function n2cc_load_custom_style() {
 	wp_enqueue_style( 'n2c-custom', N2CC_URL . 'css/n2-custom.css', array(), NULL, 'screen' );
 }
 
+/**
+ * Add "Styles" drop-down
+ */ 
+add_filter( 'mce_buttons_2', 'tav_mce_editor_buttons' );
+
+function tav_mce_editor_buttons( $buttons ) {
+	array_unshift( $buttons, 'styleselect' );
+	return $buttons;
+}
 
 add_filter( 'tiny_mce_before_init', 'tav_add_code_style' );
 /**
