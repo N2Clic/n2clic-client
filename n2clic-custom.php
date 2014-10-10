@@ -2,7 +2,7 @@
 /*
 Plugin Name: N2Clic Custom
 Plugin URI: http://themeavenue.net/awesome-support/
-Description: N2Clic Custom Functions
+Description: This WordPress plugin adds new formats/styles to the WordPress Editor.
 Version: 1.0.0
 Author: N2Clic
 Author URI: http://n2clic.com/
@@ -15,17 +15,7 @@ define( 'N2CC_PATH', plugin_dir_path( __FILE__ ) );
 add_action( 'wp_print_styles', 'n2cc_load_custom_style' );
 /* Custom style */
 function n2cc_load_custom_style() {
-	wp_enqueue_style( 'n2c-custom', N2CC_URL . 'css/custom.css', array(), NULL, 'screen' );
-}
-
-/**
- * Add "Styles" drop-down
- */ 
-add_filter( 'mce_buttons_2', 'tuts_mce_editor_buttons' );
-
-function tuts_mce_editor_buttons( $buttons ) {
-	array_unshift( $buttons, 'styleselect' );
-	return $buttons;
+	wp_enqueue_style( 'n2c-custom', N2CC_URL . 'css/n2-custom.css', array(), NULL, 'screen' );
 }
 
 
@@ -39,31 +29,64 @@ function tav_add_code_style( $settings ) {
 		array(
 			'title' => 'Code',
 			'inline' => 'code',
-			'classes' => '',
 			'wrapper' => false
 		),
 		array(
-			'title' => 'Keyboard',
+			'title' => 'Basic abbreviation',
+			'inline' => 'abbr',
+			'wrapper' => false
+		),
+		array(
+			'title' => 'User input (kbd)',
 			'inline' => 'kbd',
-			'classes' => '',
 			'wrapper' => false
 		),
-		/*array(
-			'title' => 'Download Link',
-			'selector' => 'a',
-			'classes' => 'download'
-			),
 		array(
-			'title' => 'Testimonial',
-			'selector' => 'p',
-			'classes' => 'testimonial',
-			),
-		array(
-			'title' => 'Warning Box',
+			'title' => 'Alert Success',
 			'block' => 'div',
-			'classes' => 'warning box',
-			'wrapper' => true
-			),
+			'classes' => 'alert alert-success',
+			'wrapper' => false
+		),
+		array(
+			'title' => 'Alert Info',
+			'block' => 'div',
+			'classes' => 'alert alert-info',
+			'wrapper' => false
+		),
+		array(
+			'title' => 'Alert Warning',
+			'block' => 'div',
+			'classes' => 'alert alert-warning',
+			'wrapper' => false
+		),
+		array(
+			'title' => 'Alert Danger',
+			'block' => 'div',
+			'classes' => 'alert alert-danger',
+			'wrapper' => false
+		),
+		array(
+			'title' => 'Lead Paragraph',
+			'selector' => 'p',
+			'classes' => 'lead',
+			'wrapper' => false,
+			'styles' => array(
+				'fontSize' => 'large'
+			)
+		),
+		array(
+			'title' => 'List unstyled',
+			'selector' => 'ul,ol',
+			'classes' => 'list-unstyled',
+			'wrapper' => false
+		),
+		array(
+			'title' => 'List inline',
+			'selector' => 'ul,ol',
+			'classes' => 'list-inline',
+			'wrapper' => false
+		),
+		/*
 		array(
 			'title' => 'Red Uppercase Text',
 			'inline' => 'span',
@@ -71,8 +94,14 @@ function tav_add_code_style( $settings ) {
 				'color' => '#ff0000',
 				'fontWeight' => 'bold',
 				'textTransform' => 'uppercase'
-				)
-			)*/
+			)
+		),
+		array(
+			'title' => 'Download Link',
+			'selector' => 'a',
+			'classes' => 'download'
+		),
+		*/
 		);
 
 	$settings['style_formats'] = json_encode( $style_formats );
@@ -81,18 +110,7 @@ function tav_add_code_style( $settings ) {
 
 }
 
-/* Learn TinyMCE style format options at http://www.tinymce.com/wiki.php/Configuration:formats */
-
-/*
- * Add custom stylesheet to the website front-end with hook 'wp_enqueue_scripts'
- */
-add_action('wp_enqueue_scripts', 'tuts_mcekit_editor_enqueue');
-
-/*
- * Enqueue stylesheet, if it exists.
- */
-function tuts_mcekit_editor_enqueue() {
-  $StyleUrl = plugin_dir_url(__FILE__).'editor-styles.css'; // Customstyle.css is relative to the current file
-  wp_enqueue_style( 'myCustomStyles', $StyleUrl );
+add_action( 'after_setup_theme', 'n2cc_add_editor_style' );
+function n2cc_add_editor_style() {
+    add_editor_style( N2CC_URL . 'css/n2-custom.css' );
 }
-?>
