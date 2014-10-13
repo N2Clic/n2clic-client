@@ -75,6 +75,12 @@ function tav_add_code_style( $settings ) {
 			'wrapper' => false
 		),
 		array(
+			'title' => 'Well',
+			'block' => 'div',
+			'classes' => 'well',
+			'wrapper' => false
+		),
+		array(
 			'title' => 'Lead Paragraph',
 			'selector' => 'p',
 			'classes' => 'lead',
