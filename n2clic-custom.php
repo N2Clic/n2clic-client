@@ -19,9 +19,14 @@ define( 'N2CC_PATH',    trailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'N2CC_VERSION', '1.0.1' );
 
 /**
- * Load customization files.
+ * Load branding customization files.
  */
-require_once( N2CC_PATH . 'includes/editor.php' ); // WordPress editor functions
+require_once( N2CC_PATH . 'includes/branding.php' );
+
+/**
+ * Load editor customization files.
+ */
+require_once( N2CC_PATH . 'includes/editor.php' );
 
 add_action( 'wp_print_styles', 'n2cc_load_custom_style' );
 /**
