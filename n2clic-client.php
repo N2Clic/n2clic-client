@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: N2Clic Custom
- * Plugin URI:  https://bitbucket.org/N2Clic/n2clic-custom-functions
- * Description: This WordPress plugin adds new functions and customizations to WordPress such as new formats/styles for the Editor.
+ * Plugin Name: N2Clic Client
+ * Plugin URI:  https://github.com/N2Clic/n2clic-client
+ * Description: Tiny WordPress plugin to customize the user experience for our clients.
  * Version:     1.0.1
  * Author:      N2Clic Ltd.
  * Author URI:  http://n2clic.com/
@@ -67,7 +67,7 @@ function n2cc_custom_updater_init() {
         'username'  => false,
         'key'       => '',
         'repo_uri'  => 'https://api.themeavenue.net',
-        'repo_slug' => 'n2clic-custom',
+        'repo_slug' => 'n2clic-client',
     );
 
     /* Instanciate Updater Class */
