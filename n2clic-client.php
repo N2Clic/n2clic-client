@@ -41,7 +41,9 @@ add_action( 'wp_print_styles', 'n2cc_load_custom_style' );
  * @return void
  */
 function n2cc_load_custom_style() {
-	wp_enqueue_style( 'n2c-custom', N2CC_URL . 'css/n2-custom.min.css', array(), N2CC_VERSION, 'screen' );
+	if ( ! defined( 'N2_CUSTOM_STYLES' ) || false !== N2_CUSTOM_STYLES ) {
+		wp_enqueue_style( 'n2c-custom', N2CC_URL . 'css/n2-custom.min.css', array(), N2CC_VERSION, 'screen' );
+	}
 }
 
 add_action( 'init', 'n2cc_custom_updater_init' );
